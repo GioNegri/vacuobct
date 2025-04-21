@@ -69,11 +69,11 @@ def selecionar_arquivo():
 
             messagebox.showinfo("Resultado por Rack", resultado_texto)
             
-            plt.close('all')  #aqui e embaixo tem do except
+            plt.close('all')  
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao processar o arquivo:\n{e}")
             
-        # Criar gráfico de barras (colunas verticais)
+        # Criar gráfico de barras (vertical)
         racks = [r['rack'] for r in resultados]
         uptimes = [r['uptime_pct'] for r in resultados]
         downtimes = [r['downtime_pct'] for r in resultados]
@@ -104,14 +104,13 @@ def selecionar_arquivo():
         ax.legend()
 
         ax.set_ylim(top=max(uptimes + downtimes) * 1.25)
-        plt.tight_layout(pad=2.0)  # Adiciona um respiro
-        plt.subplots_adjust(top=0.92, bottom=0.15)  # Ajuste fino se quiser 
-        plt.show()  # Essa é a segunda (e última) janela que você quer abrir
+        plt.tight_layout(pad=2.0)  
+        plt.subplots_adjust(top=0.92, bottom=0.15)  
+        plt.show()  
 
         
 
-#até aqui
-# Interface Gráfica
+
 root = tk.Tk()
 root.title("Analisador de Vácuo por Rack (BCT)")
 root.geometry("450x250")
